@@ -18,7 +18,7 @@ jobs:
           npm install
           npm run-script build
       - name: Set up SSH key for EC2 access
-        uses: webfactory/ssh-ubuntu@v0.5.3
+        uses: webfactory/ssh-ubuntu@EC2_PUBLIC_IP
         with:
           ssh-private-key: '${{ secrets.key }}'
       - name: Transfer build files to EC2
