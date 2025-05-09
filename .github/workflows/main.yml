@@ -25,5 +25,5 @@ jobs:
         run: |
           scp -r ./build/* ubuntu@${{ secrets.EC2_PUBLIC_IP }}:/var/www/html/
         env:
-          SSH_PRIVATE_KEY: '${{ secrets.EC2_SSH_PRIVATE_KEY }}'
+          SSH_PRIVATE_KEY: '${{ secrets.key }}'
           EC2_PUBLIC_IP: '${{ secrets.EC2_PUBLIC_IP }}'
