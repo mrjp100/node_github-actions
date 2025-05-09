@@ -23,8 +23,10 @@ jobs:
           ssh-private-key: '${{ secrets.key }}'
       - name: Transfer build files to EC2 using rsync
         run: >
-          rsync -avz -e "ssh -i ${{ secrets.key }} -o StrictHostKeyChecking=no"
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no"
           ./build/ ubuntu@${{ secrets.EC2_PUBLIC_IP }}:/var/www/html/
         env:
           SSH_PRIVATE_KEY: '${{ secrets.key }}'
           EC2_PUBLIC_IP: '${{ secrets.EC2_PUBLIC_IP }}'
+
+    
