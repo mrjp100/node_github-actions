@@ -18,7 +18,7 @@ jobs:
           npm install
           npm run-script build
       - name: Set up SSH key for EC2 access
-        uses: ssh -i key.pem ubuntu@65.1.111.237
+        uses: /ssh -i key.pem ubuntu@65.1.111.237
         with:
           ssh-private-key: '${{ secrets.EC2_SSH_PRIVATE_KEY }}'
       - name: Transfer build files to EC2
