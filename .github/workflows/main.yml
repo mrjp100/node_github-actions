@@ -1,26 +1,23 @@
 name: GitHub Actions React Build
-on:
+'on':
   push:
     branches:
       - master
 jobs:
   React_build:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Install and Build
-      run: |
-        npm install
-        npm run-script build
-   - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-    
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install and Build
+        run: |
+          npm install
+          npm run-script build
+        with:
+          ACCESS_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
+          BRANCH: gh-pages
+          FOLDER: build
